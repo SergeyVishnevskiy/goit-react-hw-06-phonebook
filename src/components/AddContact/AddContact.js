@@ -5,14 +5,16 @@ import styles from "./AddContact.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { userAdd } from "../../redux/actions/itemsAction";
 
-const Phonebook = ({ setContacts, contacts, setShowAlert }) => {
+const Phonebook = ({ setShowAlert }) => {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
+
+  const contacts = useSelector((state) => state.items);
+  const dispatch = useDispatch();
 
   const inputName = ({ target }) => {
     setName(target.value);
   };
-
   const inputNumber = ({ target }) => {
     setNumber(target.value);
   };
@@ -34,12 +36,13 @@ const Phonebook = ({ setContacts, contacts, setShowAlert }) => {
       }, 2000);
       return;
     }
+
+    dispatch(userAdd({ name, number, id: uuidv4() }));
+
     localStorage.setItem(
       "localContacts",
-      JSON.stringify([{ name, number, id: uuidv4() }, ...contacts])
+      JSON.stringify([...contacts, { name, number, id: uuidv4() }])
     );
-
-    setContacts([{ name, number, id: uuidv4() }, ...contacts]);
     setName("");
     setNumber("");
   };
@@ -72,6 +75,5 @@ const Phonebook = ({ setContacts, contacts, setShowAlert }) => {
 export default Phonebook;
 
 Phonebook.propTypes = {
-  setContacts: PropTypes.func.isRequired,
-  contacts: PropTypes.array.isRequired,
+  setShowAlert: PropTypes.func.isRequired,
 };
