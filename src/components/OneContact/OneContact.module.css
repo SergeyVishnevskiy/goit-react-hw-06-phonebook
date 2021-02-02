@@ -1,0 +1,32 @@
+.listItem {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 600px;
+  height: 60px;
+  padding: 0 15px;
+  border-radius: 5px;
+  box-shadow: 0px 3px 5px grey;
+}
+.contactName,
+.contactNumber {
+  display: inline-block;
+  margin-right: 50px;
+  font-size: 40px;
+  color: rgb(106, 212, 247);
+}
+.deleteButton {
+  width: 100px;
+  height: 30px;
+  outline: none;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 20px;
+  background-color: rgb(248, 228, 192);
+}
+.deleteButton:hover,
+.deleteButton:focus {
+  background-color: rgb(240, 70, 70);
+}
