@@ -10,5 +10,5 @@ export const userDelete = createAction(DELETE_USER);
 // });
 // export const userDelete = (id) => ({
 //   type: DELETE_USER,
-//   payload: od,
+//   payload: id,
 // });
